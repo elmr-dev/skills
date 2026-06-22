@@ -1,7 +1,6 @@
 # skills
 
-Agent skills for working on [elmr](https://github.com/elmr-dev) — shared so that
-everyone's Claude works from the same canon instead of each from its own memory.
+A personal skills tap for agent skills, installable via [Homecrew](https://crew.logic.inc).
 
 Each skill is a `SKILL.md` under a named directory. The frontmatter `description`
 says *when* the skill applies; an agent matches against it to decide whether to
@@ -12,25 +11,34 @@ These live in a repo, not in any one person's Claude memory, on purpose: a brain
 is per-person and drifts; a repo is shared, versioned, and changes in the open via
 PR. When the canon changes, the diff is the conversation.
 
+## Install with Homecrew
+
+[Homecrew](https://crew.logic.inc) treats this repo as a *tap* — a source of
+skills you can install and keep current from the command line.
+
+Add the tap:
+
+```sh
+crew tap add @elmr-dev/skills
+```
+
+Install a skill:
+
+```sh
+crew install elmr-dev/copy-voice
+```
+
+Keep installed skills current:
+
+```sh
+crew update
+```
+
 ## Skills
 
 - **copy-voice** — the elmr copy voice. Load before writing or reviewing any
-  elmr-facing text (site, READMEs, Discord, deploy messages, releases).
-
-## Using a skill
-
-Two paths, depending on how you work:
-
-- **Claude Code** discovers `SKILL.md` files in the repo natively. Clone or
-  reference this repo and the skills are available.
-- **claude.ai / desktop** doesn't auto-sync from a repo. Point your Claude at it:
-  add a line to your preferences along the lines of *"when writing elmr copy, read
-  the copy-voice skill from elmr-dev/skills first."* Your Claude reads it via the
-  GitHub or filesystem tools at the start of the task.
-
-Either way the repo is the source of truth and loading is per-person. That's the
-trade — slightly manual, but the canon lives somewhere everyone can pull, not in a
-brain someone has to be granted access to.
+  elmr-facing text (site, READMEs, Discord, deploy/CI messages, releases,
+  release notes, social posts).
 
 ## Adding a skill
 
